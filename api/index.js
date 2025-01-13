@@ -8,7 +8,7 @@ import multer from 'multer'
 const API = express();
 const port = 3000;
 const corsOptions ={
-    origin:'http://localhost:5173', 
+    origin:'https://blogpost-ten-black.vercel.app', 
     credentials:true,            //access-control-allow-credentials:true
     optionSuccessStatus:200
 }
@@ -20,7 +20,7 @@ API.use(cookieParser())
 // Multer handling photos upload
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
-      cb(null, './../client/public')
+      cb(null, './public')
     },
     filename: function (req, file, cb) {
       cb(null, Date.now()+"_"+file.originalname )
