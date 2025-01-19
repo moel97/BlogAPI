@@ -15,7 +15,6 @@ export let getHomePosts = (req,res)=>{
     let q = req.query.cat?"SELECT * FROM posts WHERE LOWER(genre) = LOWER($1) LIMIT 8" : "SELECT * FROM posts LIMIT 16" ;
     client.query(q,req.query.cat&&[req.query.cat],(err, data) => {
         if (err) return res.send(err);
-        console.log(data.rows);
             
         return res.status(200).json(data.rows);
         });
