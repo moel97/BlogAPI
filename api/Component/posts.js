@@ -54,7 +54,7 @@ export let getPost = (req,res)=>{
             p.body,
             p.title,
             p.photo,
-            TO_CHAR(p.postingdate::date, 'DD.MM.YYYY') AS postingdate,
+            p.postingdate AS postingdate,
             p.genre 
         FROM users u 
         JOIN posts p 
