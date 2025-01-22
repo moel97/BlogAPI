@@ -56,7 +56,9 @@ export let userLogin = async (req,res) => {
                 return res.cookie("login_token",token, { 
                     httpOnly: true,
                     secure: process.env.NODE_ENV === 'production', // Ensures the cookie is sent over HTTPS in production
-                    sameSite: 'Strict', }).status(200).json(others);
+                    sameSite: 'None', // Allow cross-origin requests
+                    maxAge: 24 * 60 * 60 * 1000 * 7, // 1 day 
+                }).status(200).json(others);
             } else {
                 return res.status(401).json("Invalid password or username!");
             }
