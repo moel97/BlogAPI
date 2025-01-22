@@ -54,7 +54,9 @@ export let userLogin = async (req,res) => {
                 let {password ,...others} = data.rows[0];
                 const token = jwt.sign({id: data.rows[0].id},"key")
                 return res.cookie("login_token",token, { 
-                    httpOnly: true}).status(200).json(others);
+                    httpOnly: true,
+                    secure: process.env.NODE_ENV === 'production', // Ensures the cookie is sent over HTTPS in production
+                    sameSite: 'Strict', }).status(200).json(others);
             } else {
                 return res.status(401).json("Invalid password or username!");
             }
