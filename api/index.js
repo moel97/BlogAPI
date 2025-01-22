@@ -17,10 +17,15 @@ API.use(cors(corsOptions))
 API.use(express.json())
 API.use(cookieParser())
 
+app.get('/photo/:imageName', (req, res) => {
+  const photoPath = path.join( req.params.imageName); // Adjust path as needed
+  res.sendFile(photoPath);
+});
+
 // Multer handling photos upload
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
-      cb(null, './public')
+      cb(null, './')
     },
     filename: function (req, file, cb) {
       cb(null, Date.now()+"_"+file.originalname )
@@ -33,7 +38,7 @@ const storage = multer.diskStorage({
 API.post('/api/upload',upload.single('photo'), function (req, res) {
   console.log("tring to upload photo");
 try {
-    const fileUrl = `${req.protocol}://${req.get('host')}/public/${req.file.filename}`;
+    const fileUrl = `${req.protocol}://${req.get('host')}/photo/${req.file.filename}`;
     res.status(200).json(fileUrl);
   } catch (error) {
     console.log("failed to upload photo");
