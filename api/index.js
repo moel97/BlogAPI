@@ -8,7 +8,7 @@ import multer from 'multer'
 const API = express();
 const port = 3000;
 const corsOptions ={
-    origin: 'http://localhost:5173', 
+    origin: 'https://blogpost-r1z0nvxa6-moel97s-projects.vercel.app', 
     credentials:true,            //access-control-allow-credentials:true
     optionSuccessStatus:200
 }
