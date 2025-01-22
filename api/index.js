@@ -17,7 +17,7 @@ API.use(cors(corsOptions))
 API.use(express.json())
 API.use(cookieParser())
 
-app.get('/photo/:imageName', (req, res) => {
+API.get('/photo/:imageName', (req, res) => {
   const photoPath = path.join( req.params.imageName); // Adjust path as needed
   res.sendFile(photoPath);
 });
