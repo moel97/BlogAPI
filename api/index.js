@@ -7,6 +7,7 @@ import cookieParser from 'cookie-parser'
 import multer from 'multer'
 import path from 'path'
 import { fileURLToPath } from 'url';
+import { log } from 'console'
 const API = express();
 const port = 3000;
 const corsOptions ={
@@ -23,7 +24,11 @@ const __filename = fileURLToPath(import.meta.url); // Get current file's path
 const __dirname = path.dirname(__filename); // Get the directory name
 
 API.get('/photo/:imageName', (req, res) => {
+  
   const photoPath = path.join(__dirname, req.params.imageName); // Adjust path as needed
+  console.log(__filename);
+  console.log(__dirname);
+  console.log(photoPath);
   res.sendFile(photoPath);
 });
 
