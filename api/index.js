@@ -47,7 +47,7 @@ const upload = multer({ storage: storage });
 API.post('/api/upload', upload.single('photo'), function (req, res) {
   console.log("Trying to upload photo");
   try {
-    const fileUrl = `${req.protocol}://${req.get('host')}/photo/${req.file.filename}`;
+    const fileUrl = `https://${req.get('host')}/photo/${req.file.filename}`;
     res.status(200).json(fileUrl);
   } catch (error) {
     console.log("Failed to upload photo", error);
