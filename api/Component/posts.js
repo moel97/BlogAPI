@@ -67,9 +67,10 @@ export let getPost = (req,res)=>{
             
             return res.send(err)}; 
         if (data.rows.length === 0) {
-            
+            console.log("there is no such post");
             return res.status(404).json("there is no such post");
         }
+        console.log("we got your post");
         return res.status(200).json(data.rows);
         });
     } ;
