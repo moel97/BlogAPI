@@ -6,6 +6,7 @@ import usersRouter from "./routes/users.js"
 import cookieParser from 'cookie-parser'
 import multer from 'multer'
 import path from 'path'
+import { fileURLToPath } from 'url';
 const API = express();
 const port = 3000;
 const corsOptions ={
@@ -17,6 +18,9 @@ const corsOptions ={
 API.use(cors(corsOptions))
 API.use(express.json())
 API.use(cookieParser())
+
+const __filename = fileURLToPath(import.meta.url); // Get current file's path
+const __dirname = path.dirname(__filename); // Get the directory name
 
 API.get('/photo/:imageName', (req, res) => {
   const photoPath = path.join(__dirname, req.params.imageName); // Adjust path as needed
