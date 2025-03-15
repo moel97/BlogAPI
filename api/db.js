@@ -1,5 +1,4 @@
 import pkg from 'pg';
-import pkg from 'pg';
 const { Pool } = pkg;
 let client = new Pool({
   user: process.env.DB_user, 
