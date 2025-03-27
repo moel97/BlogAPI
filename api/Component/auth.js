@@ -55,7 +55,7 @@ export let userLogin = async (req,res) => {
                 const token = jwt.sign({id: data.rows[0].id},"key")
                 return res.cookie("login_token",token, { 
                     httpOnly: true,
-                    secure: process.env.NODE_ENV === 'production', // Ensures the cookie is sent over HTTPS in production
+                    secure: true,  
                     sameSite: 'None', // Allow cross-origin requests
                     maxAge: 24 * 60 * 60 * 1000 * 7, // 1 day 
                 }).status(200).json(others);

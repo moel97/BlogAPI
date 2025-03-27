@@ -15,7 +15,7 @@ const corsOptions ={
     credentials:true,            //access-control-allow-credentials:true
     optionSuccessStatus:200
 }
-
+API.set('trust proxy', 1)
 API.use(cors(corsOptions))
 API.use(express.json())
 API.use(cookieParser())
