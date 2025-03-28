@@ -25,7 +25,7 @@ const __dirname = path.dirname(__filename); // Get the directory name
 
 API.get('/photo/:imageName', (req, res) => {
   
-  const photoPath = path.join(__dirname, req.params.imageName); // Adjust path as needed
+  const photoPath = path.join(__dirname + "/images", req.params.imageName); // Adjust path as needed
   console.log(__filename);
   console.log(__dirname);
   console.log(photoPath);
@@ -35,7 +35,7 @@ API.get('/photo/:imageName', (req, res) => {
 // Multer handling photos upload
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, './'); // Save files in the current directory
+    cb(null, './images/'); // Save files in the current directory
   },
   filename: function (req, file, cb) {
     cb(null, Date.now() + "_" + file.originalname); // Prefix filename with timestamp
